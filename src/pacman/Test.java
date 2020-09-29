@@ -6,7 +6,6 @@ public class Test {
 	
 		pacman.SimpleGame tester = new pacman.SimpleGame(10);
 		tester.init();
-		tester.step();
 		tester.run();
 	}
 
