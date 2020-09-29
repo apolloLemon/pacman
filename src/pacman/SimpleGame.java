@@ -8,7 +8,7 @@ public class SimpleGame extends Game{
 	
 	public void TakeTurn() {
 		System.out.println("------------------------------------------------");
-		System.out.println("Tour " + this.turn + "du jeu en cours.");
+		System.out.println("Tour " + this.turn + " du jeu en cours.");
 		System.out.println("------------------------------------------------");
 	}
 	
