@@ -1,10 +1,12 @@
 package pacman;
 
-abstract public class Game {
+abstract public class Game implements Runnable {
 	
 	protected int turn;
 	protected int maxturn;
 	protected boolean isRunning;
+	
+	Thread thread;
 	
 	public Game(int maxturn) {
 		this.maxturn = maxturn;
@@ -42,4 +44,9 @@ abstract public class Game {
 		this.isRunning=false;
 	}
 
+	public void launch() {
+		this.isRunning=true;
+		thread = new Thread(this);
+		this.thread.start();
+	}
 }
