@@ -1,10 +1,10 @@
 package pacman;
 
-public class Game {
+abstract public class Game {
 	
-	private int turn;
-	private int maxturn;
-	private boolean isRunning;
+	protected int turn;
+	protected int maxturn;
+	protected boolean isRunning;
 	
 	public Game(int maxturn) {
 		this.maxturn = maxturn;
@@ -18,9 +18,28 @@ public class Game {
 
 	public void initializeGame() {}
 	
+	abstract public void TakeTurn();
+	abstract public void GameOver();
+	abstract public boolean gameContinue();
+	
 	public void step() {
-		//TODO
+		turn++;
+		if(turn < maxturn && gameContinue()) {
+			this.TakeTurn();
+		} else {
+			this.isRunning = false;
+			this.GameOver();
+		}
 	}
 	
+	public void run() {
+		while(this.isRunning) {
+			this.step();
+		}
+	}
+	
+	public void pause() {
+		this.isRunning=false;
+	}
 
 }
