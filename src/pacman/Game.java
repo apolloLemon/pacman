@@ -1,6 +1,8 @@
 package pacman;
 
-abstract public class Game implements Runnable {
+import java.util.Observable;
+
+abstract public class Game extends Observable implements Runnable {
 	
 	protected int turn;
 	protected int maxturn;
@@ -32,6 +34,8 @@ abstract public class Game implements Runnable {
 			this.isRunning = false;
 			this.GameOver();
 		}
+		setChanged();
+		notifyObservers();
 		turn++;
 	}
 	
