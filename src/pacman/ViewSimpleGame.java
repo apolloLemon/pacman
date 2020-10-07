@@ -2,11 +2,14 @@ package pacman;
 
 import java.awt.Dimension;
 import java.awt.GraphicsEnvironment;
+import java.util.Observable;
+import java.util.Observer;
+
 import javax.swing.JFrame;
 
-public class ViewSimpleGame {
+public class ViewSimpleGame extends JFrame implements Observer{
 	
-	public static void main(String[] args) {
+	public ViewSimpleGame() {
 		JFrame jFrame = new JFrame();
 		jFrame.setTitle("Game");
 		jFrame.setSize(new Dimension(700, 700));
@@ -18,6 +21,12 @@ public class ViewSimpleGame {
 		jFrame.setLocation(dx,dy);
 		
 		jFrame.setVisible(true);
+		
+	}
+
+	@Override
+	public void update(Observable o, Object arg) {
+		// TODO Auto-generated method stub
 		
 	}
 }

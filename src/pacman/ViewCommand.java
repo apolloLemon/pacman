@@ -5,6 +5,8 @@ import java.awt.GraphicsEnvironment;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Observable;
+import java.util.Observer;
 
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
@@ -14,25 +16,24 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JSlider;
 
-public class ViewCommand implements ActionListener{
+public class ViewCommand extends JFrame implements Observer{
 	
-	public static void main(String[] args) {
+	public ViewCommand() {
 		
 		//Création de la fenêtre
-		JFrame jFrame = new JFrame();
-		jFrame.setTitle("Game");
-		jFrame.setSize(new Dimension(700, 350));
-		Dimension windowSize = jFrame.getSize();
+		this.setTitle("Game");
+		this.setSize(new Dimension(700, 350));
+		Dimension windowSize = this.getSize();
 		GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
 		java.awt.Point centerPoint = ge.getCenterPoint();
 		int dx = centerPoint.x - windowSize.width /2;
 		int dy = centerPoint.y - windowSize.height /2;
-		jFrame.setLocation(dx,dy);
+		this.setLocation(dx,dy);
 		
 		//Panel pour les boutons
 		JPanel jPanel1 = new JPanel();
 		jPanel1.setLayout(new GridLayout(1,4));
-		jFrame.add("North",jPanel1);
+		this.add("North",jPanel1);
 		
 		Icon restartIcon = new ImageIcon("icones/icon_restart.png");
 		JButton restartButton = new JButton(restartIcon);
@@ -54,7 +55,7 @@ public class ViewCommand implements ActionListener{
 		//Panel pour le jslide
 		JPanel jPanel2 = new JPanel();
 		jPanel2.setLayout(new GridLayout(1,2));
-		jFrame.add("South",jPanel2);
+		this.add("South",jPanel2);
 		
 		JSlider slider = new JSlider(1, 10, 1);
 		jPanel2.add(slider);
@@ -68,12 +69,12 @@ public class ViewCommand implements ActionListener{
         label.setText("Turn: "); 
         jPanel2.add(label);
         
-		jFrame.setVisible(true);
+		this.setVisible(true);
 		
 	}
 
 	@Override
-	public void actionPerformed(ActionEvent e) {
+	public void update(Observable o, Object arg) {
 		// TODO Auto-generated method stub
 		
 	}	

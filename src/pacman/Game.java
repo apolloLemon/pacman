@@ -2,6 +2,7 @@ package pacman;
 
 import java.util.Observable;
 
+@SuppressWarnings("deprecation")
 abstract public class Game extends Observable implements Runnable {
 	
 	protected int turn;
