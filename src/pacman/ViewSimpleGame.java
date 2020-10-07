@@ -5,6 +5,7 @@ import java.awt.GraphicsEnvironment;
 import javax.swing.JFrame;
 
 public class ViewSimpleGame {
+	
 	public static void main(String[] args) {
 		JFrame jFrame = new JFrame();
 		jFrame.setTitle("Game");
