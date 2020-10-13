@@ -20,13 +20,14 @@ public class ControleurSimpleGame implements InterfaceControleur {
 		System.out.println(this.getClass().getName()+": start");
 		vc.runButton.setEnabled(true);
 		vc.stepButton.setEnabled(true);
+		g.init();
 	}
 
 	@Override
 	public void step() {
 		System.out.println(this.getClass().getName()+": step");
 		// TODO Auto-generated method stub
-		
+		g.step();
 	}
 
 	@Override
@@ -36,6 +37,7 @@ public class ControleurSimpleGame implements InterfaceControleur {
 		vc.runButton.setEnabled(false);
 		vc.pauseButton.setEnabled(true);
 		// TODO Auto-generated method stub
+		g.launch();
 		
 	}
 
@@ -45,6 +47,7 @@ public class ControleurSimpleGame implements InterfaceControleur {
 		vc.stepButton.setEnabled(true);
 		vc.runButton.setEnabled(true);
 		// TODO Auto-generated method stub
+		g.pause();
 		
 	}
 
