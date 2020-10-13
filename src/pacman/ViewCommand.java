@@ -17,12 +17,19 @@ import javax.swing.JPanel;
 import javax.swing.JSlider;
 
 @SuppressWarnings("deprecation")
-public class ViewCommand extends JFrame implements Observer, InterfaceControleur{
+public class ViewCommand extends JFrame implements Observer{
 	
 	private int tour;
+	private InterfaceControleur ic;
 	JLabel label;
 	
-	public ViewCommand() {
+	JButton restartButton;
+	JButton runButton;
+	JButton stepButton;
+	JButton pauseButton;
+	
+	public ViewCommand(InterfaceControleur parent) {
+		ic = parent;
 		
 		//Création de la fenêtre
 		this.setTitle("Game");
@@ -40,20 +47,40 @@ public class ViewCommand extends JFrame implements Observer, InterfaceControleur
 		this.add("North",jPanel1);
 		
 		Icon restartIcon = new ImageIcon("icones/icon_restart.png");
-		JButton restartButton = new JButton(restartIcon);
+		restartButton = new JButton(restartIcon);
+		restartButton.addActionListener(new ActionListener() { 
+		    public void actionPerformed(ActionEvent e) { 
+		        ic.start();
+		    } 
+		});
 		jPanel1.add(restartButton);
 		
 		Icon runIcon = new ImageIcon("icones/icon_run.png");
-		JButton runIconButton = new JButton(runIcon);
-		jPanel1.add(runIconButton);
+		runButton = new JButton(runIcon);
+		runButton.addActionListener(new ActionListener() { 
+		    public void actionPerformed(ActionEvent e) { 
+		        ic.run();
+		    } 
+		});
+		jPanel1.add(runButton);
 		
 		Icon stepIcon = new ImageIcon("icones/icon_step.png");
-		JButton stepIconButton = new JButton(stepIcon);
-		jPanel1.add(stepIconButton);
+		stepButton = new JButton(stepIcon);
+		stepButton.addActionListener(new ActionListener() { 
+		    public void actionPerformed(ActionEvent e) { 
+		        ic.step();
+		    } 
+		});
+		jPanel1.add(stepButton);
 		
 		Icon pauseIcon = new ImageIcon("icones/icon_pause.png");
-		JButton pauseIconButton = new JButton(pauseIcon);
-		jPanel1.add(pauseIconButton);
+		pauseButton = new JButton(pauseIcon);
+		pauseButton.addActionListener(new ActionListener() { 
+		    public void actionPerformed(ActionEvent e) { 
+		       ic.pause();
+		    } 
+		});
+		jPanel1.add(pauseButton);
 		
 		
 		//Panel pour le jslide
@@ -83,35 +110,5 @@ public class ViewCommand extends JFrame implements Observer, InterfaceControleur
 		Game g = (Game)o;
 		tour = g.getMaxturn();
 		label.setText("Turn: "+tour);
-	}
-
-	@Override
-	public void start() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void step() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void run() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void pause() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void setTime(double time) {
-		// TODO Auto-generated method stub
-		
 	}	
 }
