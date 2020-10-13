@@ -11,7 +11,8 @@ public class Main {
 		SimpleGame g = new SimpleGame(7);
 		g.addObserver(vc);
 		g.addObserver(vsg);
-		
+		g.changeNotify();
+//		g.setMaxturn(7);
 	}
 
 }

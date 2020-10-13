@@ -17,6 +17,8 @@ abstract public class Game extends Observable implements Runnable {
 
 	public void setMaxturn(int maxturn) {
 		this.maxturn = maxturn;
+		this.setChanged();
+		this.notifyObservers();
 	}
 
 	protected int maxturn;
@@ -70,5 +72,10 @@ abstract public class Game extends Observable implements Runnable {
 		this.isRunning=true;
 		thread = new Thread(this);
 		this.thread.start();
+	}
+	
+	public void changeNotify() {
+		this.setChanged();
+		this.notifyObservers();
 	}
 }
