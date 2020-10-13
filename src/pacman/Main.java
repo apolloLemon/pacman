@@ -2,6 +2,7 @@ package pacman;
 
 public class Main {
 
+	@SuppressWarnings("deprecation")
 	public static void main(String[] args) {
 		System.out.println("PacMan");
 		
