@@ -18,6 +18,9 @@ import javax.swing.JSlider;
 
 public class ViewCommand extends JFrame implements Observer{
 	
+	private int tour;
+	JLabel label;
+	
 	public ViewCommand() {
 		
 		//Création de la fenêtre
@@ -65,8 +68,8 @@ public class ViewCommand extends JFrame implements Observer{
         slider.setPaintLabels(true);
         slider.setPaintTrack(true); 
         
-        JLabel label = new JLabel();
-        label.setText("Turn: "); 
+        label = new JLabel();
+        label.setText("Turn: "+tour); 
         jPanel2.add(label);
         
 		this.setVisible(true);
@@ -75,7 +78,9 @@ public class ViewCommand extends JFrame implements Observer{
 
 	@Override
 	public void update(Observable o, Object arg) {
-		// TODO Auto-generated method stub
-		
+		System.out.print("ha");
+		Game g = (Game)o;
+		tour = g.getMaxturn();
+		label.setText("Turn: "+tour);
 	}	
 }

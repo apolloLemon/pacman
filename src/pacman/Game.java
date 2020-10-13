@@ -6,6 +6,19 @@ import java.util.Observable;
 abstract public class Game extends Observable implements Runnable {
 	
 	protected int turn;
+	
+	public int getTurn() {
+		return turn;
+	}
+	
+	public int getMaxturn() {
+		return maxturn;
+	}
+
+	public void setMaxturn(int maxturn) {
+		this.maxturn = maxturn;
+	}
+
 	protected int maxturn;
 	protected boolean isRunning;
 	private long sleeptime = 1000;

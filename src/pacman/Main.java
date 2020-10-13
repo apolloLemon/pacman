@@ -8,6 +8,10 @@ public class Main {
 		ViewCommand vc = new ViewCommand();
 		ViewSimpleGame vsg = new ViewSimpleGame();
 
+		SimpleGame g = new SimpleGame(7);
+		g.addObserver(vc);
+		g.addObserver(vsg);
+		
 	}
 
 }
