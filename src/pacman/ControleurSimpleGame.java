@@ -1,7 +1,20 @@
 package pacman;
 
 public class ControleurSimpleGame implements InterfaceControleur {
+	private Game g;
+	private ViewCommand vc;
+	private ViewSimpleGame vg;
 
+	public ControleurSimpleGame(Game og) {
+		this.g = og;
+		ViewCommand vc = new ViewCommand();
+		ViewSimpleGame vsg = new ViewSimpleGame();
+		g.addObserver(vc);
+		g.addObserver(vsg);
+
+	}
+	
+	
 	@Override
 	public void start() {
 		// TODO Auto-generated method stub
