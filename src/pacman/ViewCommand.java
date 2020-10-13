@@ -16,7 +16,8 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JSlider;
 
-public class ViewCommand extends JFrame implements Observer{
+@SuppressWarnings("deprecation")
+public class ViewCommand extends JFrame implements Observer, InterfaceControleur{
 	
 	private int tour;
 	JLabel label;
@@ -82,5 +83,35 @@ public class ViewCommand extends JFrame implements Observer{
 		Game g = (Game)o;
 		tour = g.getMaxturn();
 		label.setText("Turn: "+tour);
+	}
+
+	@Override
+	public void start() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void step() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void run() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void pause() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void setTime(double time) {
+		// TODO Auto-generated method stub
+		
 	}	
 }
