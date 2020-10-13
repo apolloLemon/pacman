@@ -3,12 +3,12 @@ package pacman;
 public class ControleurSimpleGame implements InterfaceControleur {
 	private Game g;
 	private ViewCommand vc;
-	private ViewSimpleGame vg;
+	private ViewSimpleGame vsg;
 
 	public ControleurSimpleGame(Game og) {
 		this.g = og;
-		ViewCommand vc = new ViewCommand(this);
-		ViewSimpleGame vsg = new ViewSimpleGame();
+		vc = new ViewCommand(this);
+		vsg = new ViewSimpleGame();
 		g.addObserver(vc);
 		g.addObserver(vsg);
 
@@ -18,7 +18,8 @@ public class ControleurSimpleGame implements InterfaceControleur {
 	@Override
 	public void start() {
 		System.out.println(this.getClass().getName()+": start");
-		
+		vc.runButton.setEnabled(true);
+		vc.stepButton.setEnabled(true);
 	}
 
 	@Override
@@ -31,6 +32,9 @@ public class ControleurSimpleGame implements InterfaceControleur {
 	@Override
 	public void run() {
 		System.out.println(this.getClass().getName()+": run");
+		vc.stepButton.setEnabled(false);
+		vc.runButton.setEnabled(false);
+		vc.pauseButton.setEnabled(true);
 		// TODO Auto-generated method stub
 		
 	}
@@ -38,6 +42,8 @@ public class ControleurSimpleGame implements InterfaceControleur {
 	@Override
 	public void pause() {
 		System.out.println(this.getClass().getName()+": pause");
+		vc.stepButton.setEnabled(true);
+		vc.runButton.setEnabled(true);
 		// TODO Auto-generated method stub
 		
 	}

@@ -23,10 +23,10 @@ public class ViewCommand extends JFrame implements Observer{
 	private InterfaceControleur ic;
 	JLabel label;
 	
-	JButton restartButton;
-	JButton runButton;
-	JButton stepButton;
-	JButton pauseButton;
+	public JButton restartButton;
+	public JButton runButton;
+	public JButton stepButton;
+	public JButton pauseButton;
 	
 	public ViewCommand(InterfaceControleur parent) {
 		ic = parent;
@@ -57,6 +57,7 @@ public class ViewCommand extends JFrame implements Observer{
 		
 		Icon runIcon = new ImageIcon("icones/icon_run.png");
 		runButton = new JButton(runIcon);
+		runButton.setEnabled(false);
 		runButton.addActionListener(new ActionListener() { 
 		    public void actionPerformed(ActionEvent e) { 
 		        ic.run();
@@ -66,6 +67,7 @@ public class ViewCommand extends JFrame implements Observer{
 		
 		Icon stepIcon = new ImageIcon("icones/icon_step.png");
 		stepButton = new JButton(stepIcon);
+		stepButton.setEnabled(false);
 		stepButton.addActionListener(new ActionListener() { 
 		    public void actionPerformed(ActionEvent e) { 
 		        ic.step();
@@ -75,6 +77,7 @@ public class ViewCommand extends JFrame implements Observer{
 		
 		Icon pauseIcon = new ImageIcon("icones/icon_pause.png");
 		pauseButton = new JButton(pauseIcon);
+		pauseButton.setEnabled(false);
 		pauseButton.addActionListener(new ActionListener() { 
 		    public void actionPerformed(ActionEvent e) { 
 		       ic.pause();
@@ -106,7 +109,6 @@ public class ViewCommand extends JFrame implements Observer{
 
 	@Override
 	public void update(Observable o, Object arg) {
-		System.out.print("ha");
 		Game g = (Game)o;
 		tour = g.getMaxturn();
 		label.setText("Turn: "+tour);
