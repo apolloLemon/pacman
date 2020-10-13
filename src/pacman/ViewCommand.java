@@ -15,6 +15,8 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JSlider;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 
 @SuppressWarnings("deprecation")
 public class ViewCommand extends JFrame implements Observer{
@@ -27,6 +29,7 @@ public class ViewCommand extends JFrame implements Observer{
 	public JButton runButton;
 	public JButton stepButton;
 	public JButton pauseButton;
+	public JSlider slider; 
 	
 	public ViewCommand(InterfaceControleur parent) {
 		ic = parent;
@@ -91,13 +94,18 @@ public class ViewCommand extends JFrame implements Observer{
 		jPanel2.setLayout(new GridLayout(1,2));
 		this.add("South",jPanel2);
 		
-		JSlider slider = new JSlider(1, 10, 1);
+		slider = new JSlider(1, 10, 1);
 		jPanel2.add(slider);
 		// Configurer le composant
         slider.setMinorTickSpacing(1);
         slider.setPaintTicks(true);
         slider.setPaintLabels(true);
         slider.setPaintTrack(true); 
+        slider.addChangeListener(new ChangeListener() {
+        	public void stateChanged(ChangeEvent e) {
+        		ic.setTime(slider.getValue());
+        	}
+        });
         
         label = new JLabel();
         label.setText("Turn: "+tour); 

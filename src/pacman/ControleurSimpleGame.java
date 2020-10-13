@@ -50,7 +50,7 @@ public class ControleurSimpleGame implements InterfaceControleur {
 
 	@Override
 	public void setTime(double time) {
-		System.out.println(this.getClass().getName()+": setTime");
+		System.out.println(this.getClass().getName()+": setTime = "+time);
 		// TODO Auto-generated method stub
 		
 	}
