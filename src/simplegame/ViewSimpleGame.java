@@ -1,4 +1,4 @@
-package pacman;
+package simplegame;
 
 import java.awt.Dimension;
 import java.awt.GraphicsEnvironment;

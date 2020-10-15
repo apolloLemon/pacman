@@ -1,4 +1,6 @@
-package pacman;
+package simplegame;
+
+import motor.Game;
 
 public class SimpleGame extends Game{
 

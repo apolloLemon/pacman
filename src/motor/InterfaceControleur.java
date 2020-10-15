@@ -1,4 +1,4 @@
-package pacman;
+package motor;
 
 public interface InterfaceControleur {
 	void start();

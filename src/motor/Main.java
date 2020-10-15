@@ -1,4 +1,7 @@
-package pacman;
+package motor;
+
+import simplegame.ControleurSimpleGame;
+import simplegame.SimpleGame;
 
 public class Main {
 

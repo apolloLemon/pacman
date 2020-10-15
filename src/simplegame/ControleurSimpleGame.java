@@ -1,4 +1,8 @@
-package pacman;
+package simplegame;
+
+import motor.Game;
+import motor.InterfaceControleur;
+import motor.ViewCommand;
 
 public class ControleurSimpleGame implements InterfaceControleur {
 	private Game g;

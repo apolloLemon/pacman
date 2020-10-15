@@ -1,4 +1,4 @@
-package pacman;
+package motor;
 
 import java.util.Observable;
 
