@@ -6,6 +6,10 @@ import java.util.Observable;
 abstract public class Game extends Observable implements Runnable {
 	
 	protected int turn;
+	protected long turnspersec;
+	
+	protected int maxturn;
+	protected boolean isRunning;
 	
 	public int getTurn() {
 		return turn;
@@ -20,10 +24,16 @@ abstract public class Game extends Observable implements Runnable {
 		this.setChanged();
 		this.notifyObservers();
 	}
-
-	protected int maxturn;
-	protected boolean isRunning;
-	private long sleeptime = 1000;
+	
+	public void setTurnspersec(long l) {
+		this.turnspersec = l;
+		this.setChanged();
+		this.notifyObservers();
+	}
+	
+	private long sleeptime () {
+		return 1000/turnspersec;
+	}
 	
 	Thread thread;
 	
@@ -59,7 +69,7 @@ abstract public class Game extends Observable implements Runnable {
 		while(this.isRunning) {
 			this.step();
 			try {
-				Thread.sleep(sleeptime);
+				Thread.sleep(sleeptime());
 			} catch(Exception e){}
 		}
 	}

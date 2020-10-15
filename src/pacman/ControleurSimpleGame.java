@@ -55,7 +55,7 @@ public class ControleurSimpleGame implements InterfaceControleur {
 	public void setTime(double time) {
 		System.out.println(this.getClass().getName()+": setTime = "+time);
 		// TODO Auto-generated method stub
-		
+		g.setTurnspersec((long) time);
 	}
 
 }
