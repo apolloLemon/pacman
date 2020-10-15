@@ -1,7 +1,4 @@
-package motor;
-
-import simplegame.ControleurSimpleGame;
-import simplegame.SimpleGame;
+package simplegame;
 
 public class Main {
 
