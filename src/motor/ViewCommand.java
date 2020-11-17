@@ -21,7 +21,7 @@ import javax.swing.event.ChangeListener;
 @SuppressWarnings("deprecation")
 public class ViewCommand extends JFrame implements Observer{
 	
-	private int tour;
+	private int tour,tours;
 	private InterfaceControleur ic;
 	JLabel label;
 	
@@ -118,7 +118,8 @@ public class ViewCommand extends JFrame implements Observer{
 	@Override
 	public void update(Observable o, Object arg) {
 		Game g = (Game)o;
-		tour = g.getMaxturn();
-		label.setText("Turn: "+tour);
+		tour = g.getTurn();
+		tours = g.getMaxturn();
+		label.setText("Turn: "+tour+"/"+tours);
 	}	
 }
