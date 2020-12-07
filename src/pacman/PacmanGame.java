@@ -7,7 +7,7 @@ import motor.Game;
 public class PacmanGame extends Game {
 
 	String path2Maze;
-	Maze maze;	
+	static Maze maze;	
 	ArrayList<PacmanAgent> agents;
 	
 	public PacmanGame(int t, String m) {
@@ -17,7 +17,7 @@ public class PacmanGame extends Game {
 		
 	}
 	
-	Boolean isLegalMove(PacmanAgent agnt, AgentAction actn) {
+	static Boolean isLegalMove(PacmanAgent agnt, AgentAction actn) {
 		int x = agnt.getXy().getX() + actn.get_vx();
 		int y = agnt.getXy().getY() + actn.get_vy();
 		if(maze.isWall(x, y)) return false;
@@ -29,6 +29,7 @@ public class PacmanGame extends Game {
 		int y = agnt.getXy().getY() + actn.get_vy();
 		agnt.getXy().setX(x);
 		agnt.getXy().setY(y);
+		agnt.getXy().setDir(actn.get_direction());
 	}
 	
 	@Override
