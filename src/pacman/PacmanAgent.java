@@ -8,6 +8,7 @@ public class PacmanAgent {
 	PacmanAgent(PositionAgent xy){
 		this.xy = xy;
 		alive = true;
+		ia = new RandomStrat();
 	}
 
 	public PacmanStrategy getIa() {
