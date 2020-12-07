@@ -56,6 +56,7 @@ public class PacmanGame extends Game {
 			AgentAction act = a.getIa().action(this);
 			if(isLegalMove(a,act)) {
 				moveAgent(a,act);
+				System.out.println("moveagent to: "+a.getXy().toString());
 			}
 		}
 		
@@ -70,7 +71,7 @@ public class PacmanGame extends Game {
 	@Override
 	public boolean gameContinue() {
 		// TODO Auto-generated method stub
-		return false;
+		return true;
 	}
 
 	public Maze getMaze() {
