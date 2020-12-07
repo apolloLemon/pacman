@@ -7,7 +7,6 @@ import java.util.Observable;
 import java.util.Observer;
 
 import javax.swing.JFrame;
-import javax.swing.JLabel;
 
 public class ViewPacmanGame extends JFrame implements Observer {
 
@@ -34,7 +33,6 @@ public class ViewPacmanGame extends JFrame implements Observer {
 	public void update(Observable o, Object arg) {
 		PacmanGame g = (PacmanGame)o;
 		
-		int i=0, j=0; //compteurs de pacmans et ghosts
 		ArrayList<PositionAgent> pacmans_pos = new ArrayList<PositionAgent>();
 		ArrayList<PositionAgent> ghosts_pos = new ArrayList<PositionAgent>();
 		for (PacmanAgent a : g.getAgents()) {

@@ -1,9 +1,7 @@
 package pacman;
 
-import motor.Game;
 import motor.InterfaceControleur;
 import motor.ViewCommand;
-import simplegame.ViewSimpleGame;
 
 public class ControleurPacmanGame implements InterfaceControleur {
 	private PacmanGame g;
