@@ -2,6 +2,7 @@ package pacman;
 
 import java.awt.Dimension;
 import java.awt.GraphicsEnvironment;
+import java.util.ArrayList;
 import java.util.Observable;
 import java.util.Observer;
 
@@ -32,7 +33,21 @@ public class ViewPacmanGame extends JFrame implements Observer {
 	@Override
 	public void update(Observable o, Object arg) {
 		PacmanGame g = (PacmanGame)o;
-		ppg.setMaze(g.getMaze());
+		
+		int i=0, j=0; //compteurs de pacmans et ghosts
+		ArrayList<PositionAgent> pacmans_pos = new ArrayList<PositionAgent>();
+		ArrayList<PositionAgent> ghosts_pos = new ArrayList<PositionAgent>();
+		for (PacmanAgent a : g.getAgents()) {
+			if(a instanceof Pacman) {
+				pacmans_pos.add(a.getXy());
+			}
+			if(a instanceof Ghost) {
+				ghosts_pos.add(a.getXy());
+			}
+		}
+		ppg.setPacmans_pos(pacmans_pos);
+		ppg.setGhosts_pos(ghosts_pos);
+
 	}
 
 }

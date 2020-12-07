@@ -33,6 +33,7 @@ public class PacmanGame extends Game {
 	
 	@Override
 	public void initializeGame() {
+		agents= new ArrayList<PacmanAgent>();
 		try {
 			maze = new Maze(path2Maze);
 			
@@ -78,6 +79,14 @@ public class PacmanGame extends Game {
 
 	public void setMaze(Maze maze) {
 		this.maze = maze;
+	}
+
+	public ArrayList<PacmanAgent> getAgents() {
+		return agents;
+	}
+
+	public void setAgents(ArrayList<PacmanAgent> agents) {
+		this.agents = agents;
 	}
 
 }
