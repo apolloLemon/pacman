@@ -63,10 +63,12 @@ public class PacmanGame extends Game {
 			int y = a.getXy().getY();
 			if(a instanceof Pacman) {
 				if(maze.isFood(x, y)) {
+					System.out.println("Pacman on food");
 					maze.setFood(x, y, false);
 					//TODO food mechanic
 				}
 				if(maze.isCapsule(x, y)) {
+					System.out.println("Pacman on capsule");
 					maze.setCapsule(x, y, false);
 					//TODO Capsule mechanic
 				}
