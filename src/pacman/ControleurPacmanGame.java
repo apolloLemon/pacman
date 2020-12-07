@@ -6,17 +6,16 @@ import motor.ViewCommand;
 import simplegame.ViewSimpleGame;
 
 public class ControleurPacmanGame implements InterfaceControleur {
-	private Game g;
+	private PacmanGame g;
 	private ViewCommand vc;
 	private ViewPacmanGame vg;
 
-	public ControleurPacmanGame(Game og) {
-		this.g = og;
+	public ControleurPacmanGame(PacmanGame g) {
+		this.g = g;
 		vc = new ViewCommand(this);
-		vg = new ViewPacmanGame();
+		vg = new ViewPacmanGame(g);
 		g.addObserver(vc);
 		g.addObserver(vg);
-
 	}
 	
 	

@@ -4,11 +4,17 @@ import motor.Game;
 
 public class PacmanGame extends Game {
 
-	Maze m;
-	PanelPacmanGame ppg;
+	Maze maze;
 	
-	public PacmanGame(int t) {
+	public PacmanGame(int t, String m) {
 		super(t);
+		
+		try {
+			maze = new Maze(m);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
 	}
 	
 	@Override
@@ -33,6 +39,14 @@ public class PacmanGame extends Game {
 	public boolean gameContinue() {
 		// TODO Auto-generated method stub
 		return false;
+	}
+
+	public Maze getMaze() {
+		return maze;
+	}
+
+	public void setMaze(Maze maze) {
+		this.maze = maze;
 	}
 
 }
