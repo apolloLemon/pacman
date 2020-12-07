@@ -47,6 +47,7 @@ public class ViewPacmanGame extends JFrame implements Observer {
 		}
 		ppg.setPacmans_pos(pacmans_pos);
 		ppg.setGhosts_pos(ghosts_pos);
+		ppg.setMaze(g.getMaze());
 		ppg.repaint();
 	}
 

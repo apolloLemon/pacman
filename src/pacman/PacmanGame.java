@@ -59,6 +59,18 @@ public class PacmanGame extends Game {
 				moveAgent(a,act);
 				System.out.println("moveagent to: "+a.getXy().toString());
 			}
+			int x = a.getXy().getX();
+			int y = a.getXy().getY();
+			if(a instanceof Pacman) {
+				if(maze.isFood(x, y)) {
+					maze.setFood(x, y, false);
+					//TODO food mechanic
+				}
+				if(maze.isCapsule(x, y)) {
+					maze.setCapsule(x, y, false);
+					//TODO Capsule mechanic
+				}
+			}
 		}
 		
 	}
