@@ -15,6 +15,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JSlider;
+import javax.swing.SwingConstants;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
@@ -23,7 +24,7 @@ public class ViewCommand extends JFrame implements Observer{
 	
 	private int tour,tours;
 	private InterfaceControleur ic;
-	JLabel label;
+	JLabel label, labelSlider;
 	
 	public JButton restartButton;
 	public JButton runButton;
@@ -43,6 +44,7 @@ public class ViewCommand extends JFrame implements Observer{
 		int dx = centerPoint.x - windowSize.width /2;
 		int dy = centerPoint.y - windowSize.height /2;
 		this.setLocation(dx,dy);
+		this.setLayout(new GridLayout(2,1));
 		
 		//Panel pour les boutons
 		JPanel jPanel1 = new JPanel();
@@ -94,8 +96,16 @@ public class ViewCommand extends JFrame implements Observer{
 		jPanel2.setLayout(new GridLayout(1,2));
 		this.add("South",jPanel2);
 		
+		
+		JPanel jPanel22 = new JPanel();
+		jPanel22.setLayout(new GridLayout(2,1));
+		jPanel2.add("West",jPanel22);
+		
+		labelSlider = new JLabel(); 
+        jPanel22.add(labelSlider);
+		
 		slider = new JSlider(1, 10, 1);
-		jPanel2.add(slider);
+		jPanel22.add(slider);
 		// Configurer le composant
         slider.setMinorTickSpacing(1);
         slider.setPaintTicks(true);
@@ -103,12 +113,15 @@ public class ViewCommand extends JFrame implements Observer{
         slider.setPaintTrack(true); 
         slider.addChangeListener(new ChangeListener() {
         	public void stateChanged(ChangeEvent e) {
+        		labelSlider.setText("Turns per second: "+slider.getValue());
         		ic.setTime(slider.getValue());
         	}
         });
+        labelSlider.setText("Turns per second: "+slider.getValue());
+		ic.setTime(slider.getValue());
         
         label = new JLabel();
-        label.setText("Turn: "+tour); 
+        label.setText("Turns: "+tours);
         jPanel2.add(label);
         
 		this.setVisible(true);
