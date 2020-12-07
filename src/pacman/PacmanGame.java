@@ -8,7 +8,7 @@ public class PacmanGame extends Game {
 
 	String path2Maze;
 	Maze maze;	
-	ArrayList<Agent> agents;
+	ArrayList<PacmanAgent> agents;
 	
 	public PacmanGame(int t, String m) {
 		super(t);
@@ -17,13 +17,31 @@ public class PacmanGame extends Game {
 		
 	}
 	
+	Boolean isLegalMove(PacmanAgent agnt, AgentAction actn) {
+		int x = agnt.getXy().getX() + actn.get_vx();
+		int y = agnt.getXy().getY() + actn.get_vy();
+		if(maze.isWall(x, y)) return false;
+		return true;
+	}
+	
+	void moveAgent(PacmanAgent agnt, AgentAction actn) {
+		int x = agnt.getXy().getX() + actn.get_vx();
+		int y = agnt.getXy().getY() + actn.get_vy();
+		agnt.getXy().setX(x);
+		agnt.getXy().setY(y);
+	}
+	
 	@Override
 	public void initializeGame() {
 		try {
 			maze = new Maze(path2Maze);
 			
+			//replace with factory
 			for(PositionAgent pos : maze.getGhosts_start()) {
 				agents.add(new Ghost(pos));
+			}
+			for(PositionAgent pos : maze.getPacman_start()) {
+				agents.add(new Pacman(pos));
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -33,7 +51,12 @@ public class PacmanGame extends Game {
 
 	@Override
 	public void TakeTurn() {
-		// TODO Auto-generated method stub
+		for(PacmanAgent a : agents) {
+			AgentAction act = a.getIa().action(this);
+			if(isLegalMove(a,act)) {
+				moveAgent(a,act);
+			}
+		}
 		
 	}
 

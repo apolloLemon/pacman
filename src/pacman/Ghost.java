@@ -1,10 +1,12 @@
 package pacman;
 
-public class Ghost extends Agent {
+public class Ghost extends PacmanAgent {
 
+	Boolean scared;
+	
 	Ghost(PositionAgent xy) {
 		super(xy);
-		// TODO Auto-generated constructor stub
+		scared = false;
 	}
 	
 }
