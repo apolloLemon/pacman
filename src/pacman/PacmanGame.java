@@ -10,10 +10,19 @@ public class PacmanGame extends Game {
 	static Maze maze;	
 	ArrayList<PacmanAgent> agents;
 	
+	int foodCounter;
+	
+	int capsuleTime;
+	int capsuleTimer;
+	Boolean capsuleActive;
+	
 	public PacmanGame(int t, String m) {
 		super(t);
 		path2Maze = m;
 		initializeGame();
+		foodCounter=0;
+		capsuleTimer=0;
+		capsuleTime=20;
 		
 	}
 	
@@ -30,6 +39,12 @@ public class PacmanGame extends Game {
 		agnt.getXy().setX(x);
 		agnt.getXy().setY(y);
 		agnt.getXy().setDir(actn.get_direction());
+	}
+	
+	void CapsuleToggle(Boolean b) {
+		for(PacmanAgent a : agents) {
+			if (a instanceof Ghost) ((Ghost) a).SetScared(b);
+		}
 	}
 	
 	@Override
@@ -53,6 +68,13 @@ public class PacmanGame extends Game {
 
 	@Override
 	public void TakeTurn() {
+		capsuleTimer--;
+		if (capsuleTimer==0) {
+			capsuleActive=false;
+			CapsuleToggle(capsuleActive);
+		}
+		if(capsuleTimer<0) capsuleTimer=0;
+		
 		for(PacmanAgent a : agents) {
 			AgentAction act = a.getIa().action(this);
 			if(isLegalMove(a,act)) {
@@ -66,11 +88,17 @@ public class PacmanGame extends Game {
 					System.out.println("Pacman on food");
 					maze.setFood(x, y, false);
 					//TODO food mechanic
+					foodCounter++;
 				}
 				if(maze.isCapsule(x, y)) {
 					System.out.println("Pacman on capsule");
 					maze.setCapsule(x, y, false);
 					//TODO Capsule mechanic
+					capsuleTimer+=capsuleTime;
+					if(!capsuleActive) {
+						capsuleActive=true;
+						CapsuleToggle(capsuleActive);
+					}
 				}
 			}
 		}

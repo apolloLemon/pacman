@@ -12,5 +12,14 @@ public class Ghost extends PacmanAgent {
 		flee = new RandomStrat();
 		hunt = new ValidRandomMoveStrat(this);
 	}
+
+	void StrategyUpdate() {
+		if(scared) ia = flee;
+		else ia = hunt;
+	}
 	
+	void  SetScared(Boolean b) {
+		scared = b;
+		StrategyUpdate();
+	}
 }
