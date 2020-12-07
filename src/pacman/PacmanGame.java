@@ -1,32 +1,40 @@
 package pacman;
 
+import java.util.ArrayList;
+
 import motor.Game;
 
 public class PacmanGame extends Game {
 
-	Maze maze;
+	String path2Maze;
+	Maze maze;	
+	ArrayList<Agent> agents;
 	
 	public PacmanGame(int t, String m) {
 		super(t);
-		
-		try {
-			maze = new Maze(m);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+		path2Maze = m;
+		initializeGame();
 		
 	}
 	
 	@Override
 	public void initializeGame() {
-		// TODO Auto-generated method stub
+		try {
+			maze = new Maze(path2Maze);
+			
+			for(PositionAgent pos : maze.getGhosts_start()) {
+				agents.add(new Ghost(pos));
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 
 	}
 
 	@Override
 	public void TakeTurn() {
 		// TODO Auto-generated method stub
-
+		
 	}
 
 	@Override
