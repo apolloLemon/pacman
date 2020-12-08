@@ -83,6 +83,8 @@ public class PacmanGame extends Game {
 			}
 			int x = a.getXy().getX();
 			int y = a.getXy().getY();
+			
+			//Pacman Collisions
 			if(a instanceof Pacman) {
 				if(maze.isFood(x, y)) {
 					System.out.println("Pacman on food");
@@ -98,6 +100,17 @@ public class PacmanGame extends Game {
 					if(!capsuleActive) {
 						capsuleActive=true;
 						CapsuleToggle(capsuleActive);
+					}
+				}
+				//Agent Collisions
+				for(PacmanAgent b : agents) {
+					if(b instanceof Ghost) {
+						if(a.getXy().equals(b.getXy()))
+						if (capsuleActive) {
+							b.Die();
+						} else {
+							a.Die();
+						}
 					}
 				}
 			}

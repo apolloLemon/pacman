@@ -26,5 +26,16 @@ public class PacmanAgent {
 	public void setXy(PositionAgent xy) {
 		this.xy = xy;
 	}
+
+	public Boolean getAlive() {
+		return alive;
+	}
+
+	public void setAlive(Boolean alive) {
+		this.alive = alive;
+	}
 	
+	public void Die() {
+		this.setAlive(false);
+	}
 }
