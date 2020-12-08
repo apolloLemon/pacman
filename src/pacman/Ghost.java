@@ -5,6 +5,7 @@ public class Ghost extends PacmanAgent {
 	Boolean scared;
 	PacmanStrategy flee;
 	PacmanStrategy hunt;
+	PacmanStrategy home;
 	
 	Ghost(PositionAgent xy) {
 		super(xy);
@@ -21,5 +22,12 @@ public class Ghost extends PacmanAgent {
 	void  SetScared(Boolean b) {
 		scared = b;
 		StrategyUpdate();
+	}
+	
+	@Override
+	public void Die() {
+		scared=false;
+		alive=false;
+		ia=home;
 	}
 }
