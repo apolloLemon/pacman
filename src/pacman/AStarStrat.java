@@ -20,6 +20,7 @@ public class AStarStrat implements PacmanStrategy {
 	
 	@Override
 	public AgentAction action(PacmanGame m) {
+		//TODO
 		return null;
 	}
 
