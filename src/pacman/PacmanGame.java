@@ -11,8 +11,8 @@ public class PacmanGame extends Game {
 	ArrayList<PacmanAgent> agents;
 	boolean pacmanAlive;
 	
-	int foodTotal;
-	int foodCounter;
+	int edible;
+	int eaten;
 	
 	int capsuleTime;
 	int capsuleTimer;
@@ -22,9 +22,10 @@ public class PacmanGame extends Game {
 		super(t);
 		path2Maze = m;
 		initializeGame();
-		foodCounter=0;
+		eaten=0;
 		capsuleTimer=0;
 		capsuleTime=20;
+		capsuleActive=false;
 		
 	}
 	
@@ -66,10 +67,10 @@ public class PacmanGame extends Game {
 			
 			int X = maze.getSizeX();
 			int Y = maze.getSizeY();
-			foodTotal=0;
+			edible=0;
 			for(int x=0;x<X;x++) {
 				for(int y=0;y<Y;y++) {
-					if(maze.isFood(x, y)) foodTotal++;
+					if(maze.isFood(x, y) || maze.isCapsule(x, y)) edible++;
 				}
 			}
 			
@@ -78,7 +79,7 @@ public class PacmanGame extends Game {
 			System.out.println("      GAME READY"      );
 			System.out.println("**********************");
 			System.out.println(maze.getInitNumberOfPacmans()+" vs  "+ maze.getInitNumberOfGhosts()+" ghosts" );
-			System.out.println("food: "+ foodTotal);
+			System.out.println("things to eat: "+ edible);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -108,7 +109,7 @@ public class PacmanGame extends Game {
 					System.out.println("Pacman on food");
 					maze.setFood(x, y, false);
 					//TODO food mechanic
-					foodCounter++;
+					eaten++;
 				}
 				if(maze.isCapsule(x, y)) {
 					System.out.println("Pacman on capsule");
@@ -142,15 +143,20 @@ public class PacmanGame extends Game {
 		System.out.println("      GAME OVER!"      );
 		System.out.println("**********************");
 		// TODO Auto-generated method stub
-		
+		System.out.println("food: "+(eaten < edible));
+		System.out.println("pacmanAlive: "+pacmanAlive);
 	}
 
 	@Override
 	public boolean gameContinue() {
-		boolean still_wants_to_eat = ( foodCounter < foodTotal );
+		boolean still_wants_to_eat = ( eaten < edible );
 		
+		pacmanAlive=false;
 		for(PacmanAgent a : agents) {
-			if(a instanceof Pacman &&  a.isAlive()) return (true && still_wants_to_eat);
+			if(a instanceof Pacman &&  a.isAlive()) {
+				pacmanAlive=true;
+				return (pacmanAlive && still_wants_to_eat);
+			}
 		}
 		return false;
 	}
