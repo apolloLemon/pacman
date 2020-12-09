@@ -67,7 +67,7 @@ public class PacmanGame extends Game {
 			
 			int X = maze.getSizeX();
 			int Y = maze.getSizeY();
-			edible=0;
+			edible=0; eaten=0;
 			for(int x=0;x<X;x++) {
 				for(int y=0;y<Y;y++) {
 					if(maze.isFood(x, y) || maze.isCapsule(x, y)) edible++;
@@ -89,6 +89,7 @@ public class PacmanGame extends Game {
 	public void TakeTurn() {
 		capsuleTimer--;
 		if (capsuleTimer==0) {
+			System.out.println("capsule end");
 			capsuleActive=false;
 			CapsuleToggle(capsuleActive);
 		}
@@ -117,6 +118,7 @@ public class PacmanGame extends Game {
 					//TODO Capsule mechanic
 					capsuleTimer+=capsuleTime;
 					if(!capsuleActive) {
+						System.out.println("capsule Start");
 						capsuleActive=true;
 						CapsuleToggle(capsuleActive);
 					}
