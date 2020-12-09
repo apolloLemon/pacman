@@ -7,9 +7,11 @@ import motor.Game;
 public class PacmanGame extends Game {
 
 	String path2Maze;
-	static Maze maze;	
+	static Maze maze;
 	ArrayList<PacmanAgent> agents;
+	boolean pacmanAlive;
 	
+	int foodTotal;
 	int foodCounter;
 	
 	int capsuleTime;
@@ -58,12 +60,28 @@ public class PacmanGame extends Game {
 				agents.add(new Ghost(pos));
 			}
 			for(PositionAgent pos : maze.getPacman_start()) {
+				pacmanAlive = true;
 				agents.add(new Pacman(pos));
 			}
+			
+			int X = maze.getSizeX();
+			int Y = maze.getSizeY();
+			foodTotal=0;
+			for(int x=0;x<X;x++) {
+				for(int y=0;y<Y;y++) {
+					if(maze.isFood(x, y)) foodTotal++;
+				}
+			}
+			
+			
+			System.out.println("**********************");
+			System.out.println("      GAME READY"      );
+			System.out.println("**********************");
+			System.out.println(maze.getInitNumberOfPacmans()+" vs  "+ maze.getInitNumberOfGhosts()+" ghosts" );
+			System.out.println("food: "+ foodTotal);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-
 	}
 
 	@Override
@@ -120,14 +138,19 @@ public class PacmanGame extends Game {
 
 	@Override
 	public void GameOver() {
+		System.out.println("**********************");
+		System.out.println("      GAME OVER!"      );
+		System.out.println("**********************");
 		// TODO Auto-generated method stub
-
+		
 	}
 
 	@Override
 	public boolean gameContinue() {
+		boolean still_wants_to_eat = ( foodCounter < foodTotal );
+		
 		for(PacmanAgent a : agents) {
-			if(a instanceof Pacman &&  a.isAlive()) return true;
+			if(a instanceof Pacman &&  a.isAlive()) return (true && still_wants_to_eat);
 		}
 		return false;
 	}
