@@ -27,7 +27,7 @@ public class PacmanAgent {
 		this.xy = xy;
 	}
 
-	public Boolean getAlive() {
+	public Boolean isAlive() {
 		return alive;
 	}
 

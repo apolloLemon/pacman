@@ -126,8 +126,10 @@ public class PacmanGame extends Game {
 
 	@Override
 	public boolean gameContinue() {
-		// TODO Auto-generated method stub
-		return true;
+		for(PacmanAgent a : agents) {
+			if(a instanceof Pacman &&  a.isAlive()) return true;
+		}
+		return false;
 	}
 
 	public Maze getMaze() {
