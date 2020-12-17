@@ -2,7 +2,7 @@ package pacman;
 
 import java.util.concurrent.ThreadLocalRandom;
 
-public class RandomStrat implements PacmanStrategy {
+public class Strat_Random implements PacmanStrategy {
 
 	@Override
 	public AgentAction action(PacmanGame m) {

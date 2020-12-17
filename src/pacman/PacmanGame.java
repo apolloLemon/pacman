@@ -36,6 +36,13 @@ public class PacmanGame extends Game {
 		return true;
 	}
 	
+	static Boolean isLegalMove(PositionAgent agnt, AgentAction actn) {
+		int x = agnt.getX() + actn.get_vx();
+		int y = agnt.getY() + actn.get_vy();
+		if(maze.isWall(x, y)) return false;
+		return true;
+	}
+	
 	void moveAgent(PacmanAgent agnt, AgentAction actn) {
 		int x = agnt.getXy().getX() + actn.get_vx();
 		int y = agnt.getXy().getY() + actn.get_vy();
@@ -103,6 +110,10 @@ public class PacmanGame extends Game {
 			}
 			int x = a.getXy().getX();
 			int y = a.getXy().getY();
+			
+			if(a instanceof Ghost) {
+				System.out.print("currentGhost Strat : " + a.ia.getClass().toString());
+			}
 			
 			//Pacman Collisions
 			if(a instanceof Pacman) {

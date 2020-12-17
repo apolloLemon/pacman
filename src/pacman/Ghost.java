@@ -10,9 +10,10 @@ public class Ghost extends PacmanAgent {
 	Ghost(PositionAgent xy) {
 		super(xy);
 		scared = false;
-		flee = new RandomStrat();
-		hunt = new ValidRandomMoveStrat(this);
-		home = flee;
+		flee = new Strat_Random();
+		hunt = new Strat_AStar(this);
+		home = new Strat_AStar(this,xy);
+		StrategyUpdate();
 	}
 
 	void StrategyUpdate() {

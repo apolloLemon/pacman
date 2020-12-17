@@ -2,11 +2,11 @@ package pacman;
 
 import java.util.concurrent.ThreadLocalRandom;
 
-public class ValidRandomMoveStrat implements PacmanStrategy {
+public class Strat_ValidRandomMove implements PacmanStrategy {
 
 	PacmanAgent body;
 	
-	ValidRandomMoveStrat(PacmanAgent body){
+	Strat_ValidRandomMove(PacmanAgent body){
 		this.body = body;
 	}
 	
