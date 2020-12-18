@@ -39,6 +39,10 @@ public class Strat_AStar implements PacmanStrategy {
 		plan = new Stack<AgentAction>();
 		Astar(body.getXy(), this.target);
 		System.out.println("Astar done, plan length:"+plan.size());
+		if(plan.size()==0) {
+			return new AgentAction(4);
+		}
+		
 		return plan.pop();
 	}
 
