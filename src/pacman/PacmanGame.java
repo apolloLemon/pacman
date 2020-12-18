@@ -130,6 +130,7 @@ public class PacmanGame extends Game {
 					System.out.println("Pacman on capsule");
 					maze.setCapsule(x, y, false);
 					//TODO Capsule mechanic
+					eaten++;
 					capsuleTimer+=capsuleTime;
 					if(!capsuleActive) {
 						System.out.println("capsule Start");
