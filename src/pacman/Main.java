@@ -13,12 +13,11 @@ public class Main {
 		File workingDirectory = new File(System.getProperty("user.dir")+"/layout");
 		JFileChooser jfc = new JFileChooser();
 		jfc.setCurrentDirectory(workingDirectory);
-		jfc.setDialogTitle("Choose a  file: ");
+		jfc.setDialogTitle("Choose a  map: ");
 		jfc.setFileSelectionMode(JFileChooser.FILES_ONLY);
 		int returnValue = jfc.showSaveDialog(null);
 		if (returnValue == JFileChooser.APPROVE_OPTION) {
 		    if (jfc.getSelectedFile().isFile()) {
-		        System.out.println("You selected the directory: " + jfc.getSelectedFile());
 		        path2Maze=jfc.getSelectedFile().getAbsolutePath();
 		    }
 		}
