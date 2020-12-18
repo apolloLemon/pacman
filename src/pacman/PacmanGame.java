@@ -9,6 +9,8 @@ public class PacmanGame extends Game {
 	String path2Maze;
 	static Maze maze;
 	ArrayList<PacmanAgent> agents;
+	AgentFactory agentFactory;
+	
 	boolean pacmanAlive;
 	
 	int edible;
@@ -26,7 +28,7 @@ public class PacmanGame extends Game {
 		capsuleTimer=0;
 		capsuleTime=20;
 		capsuleActive=false;
-		
+		agentFactory = new Factory_Classic();
 	}
 	
 	static Boolean isLegalMove(PacmanAgent agnt, AgentAction actn) {
@@ -63,13 +65,12 @@ public class PacmanGame extends Game {
 		try {
 			maze = new Maze(path2Maze);
 			
-			//replace with factory
 			for(PositionAgent pos : maze.getGhosts_start()) {
-				agents.add(new Ghost(pos));
+				agents.add(agentFactory.createGhost(pos));
 			}
 			for(PositionAgent pos : maze.getPacman_start()) {
 				pacmanAlive = true;
-				agents.add(new Pacman(pos));
+				agents.add(agentFactory.createPacMan(pos));
 			}
 			
 			int X = maze.getSizeX();
