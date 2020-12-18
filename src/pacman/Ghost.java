@@ -6,7 +6,7 @@ public class Ghost extends PacmanAgent {
 	PacmanStrategy flee;
 	PacmanStrategy hunt;
 	PacmanStrategy home;
-	
+
 	Ghost(PositionAgent xy) {
 		super(xy);
 		scared = false;
@@ -31,5 +31,17 @@ public class Ghost extends PacmanAgent {
 		scared=false;
 		alive=false;
 		ia=home;
+	}
+	
+	public void setFlee(PacmanStrategy flee) {
+		this.flee = flee;
+	}
+
+	public void setHunt(PacmanStrategy hunt) {
+		this.hunt = hunt;
+	}
+
+	public void setHome(PacmanStrategy home) {
+		this.home = home;
 	}
 }
