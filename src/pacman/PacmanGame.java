@@ -10,6 +10,7 @@ public class PacmanGame extends Game {
 	static Maze maze;
 	ArrayList<PacmanAgent> agents;
 	AgentFactory agentFactory;
+	ArrayList<Integer> playeragents;
 	
 	boolean pacmanAlive;
 	
@@ -29,6 +30,7 @@ public class PacmanGame extends Game {
 		capsuleTime=20;
 		capsuleActive=false;
 		agentFactory = new Factory_Classic();
+		playeragents = new ArrayList<Integer>();
 	}
 	
 	static Boolean isLegalMove(PacmanAgent agnt, AgentAction actn) {
@@ -149,6 +151,14 @@ public class PacmanGame extends Game {
 			}
 		}
 		
+	}
+	
+	void findPlayerAgents() {
+		for(int i=0;i<agents.size();i++) {
+			if( agents.get(i).getIa() instanceof Strat_UserInput ) {
+				playeragents.add(i);
+			}
+		}
 	}
 
 	@Override

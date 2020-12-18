@@ -2,17 +2,24 @@ package pacman;
 
 import java.awt.Dimension;
 import java.awt.GraphicsEnvironment;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.util.ArrayList;
 import java.util.Observable;
 import java.util.Observer;
 
 import javax.swing.JFrame;
 
+import motor.InterfaceGameInput;
+import motor.KeyBinds;
+
 public class ViewPacmanGame extends JFrame implements Observer {
 
 	PanelPacmanGame ppg;
+	InterfaceGameInput parent;
 	
-	public ViewPacmanGame(PacmanGame pg) {
+	public ViewPacmanGame(PacmanGame pg, InterfaceGameInput parent) {
+		this.parent = parent;
 		JFrame jFrame = new JFrame();
 		jFrame.setTitle("Pacman");
 		jFrame.setSize(new Dimension(700, 700));
@@ -25,6 +32,9 @@ public class ViewPacmanGame extends JFrame implements Observer {
 		
 		ppg = new PanelPacmanGame(pg.getMaze());
 		jFrame.add(ppg);
+		
+		jFrame.addKeyListener( new KeyBinds(parent));
+		
 		jFrame.setVisible(true);
 		
 	}
